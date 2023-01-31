@@ -1,5 +1,11 @@
 import React from "react";
-import { Link, NavLink, Outlet, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import { getInvoices } from "./data";
 
 const Invoices = () => {
@@ -33,18 +39,23 @@ const Invoices = () => {
             return name.startsWith(filter.toLowerCase());
           })
           .map((invoice, index) => (
-            <NavLink
+            <ResultNavLink
               className={({ isActive }) => (isActive ? activeClassName : "")}
               to={`/invoices/${invoice.number}`}
               key={index}
             >
               {invoice.last_name}
-            </NavLink>
+            </ResultNavLink>
           ))}
       </div>
       <Outlet></Outlet>
     </main>
   );
+};
+
+const ResultNavLink = ({ to, ...props }) => {
+  let location = useLocation();
+  return <NavLink to={to + location.search} {...props}></NavLink>;
 };
 
 export default Invoices;
