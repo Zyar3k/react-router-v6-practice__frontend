@@ -1,21 +1,25 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { getInvoices } from "./data";
 
 const Invoices = () => {
   let invoices = getInvoices();
-
+  const activeClassName = "text-red-400 bg-gray-200";
   return (
     <main className="text-center">
       <div className="flex flex-col gap-3">
         {invoices.map((invoice, index) => (
-          <Link
-            className="bg-gray-200"
+          <NavLink
+            // style={({ isActive }) => {
+            //   return { color: isActive ? "red" : "" };
+            // }}
+            className={({ isActive }) => (isActive ? activeClassName : "")}
+            // className="bg-gray-200"
             to={`/invoices/${invoice.number}`}
             key={index}
           >
             {invoice.last_name}
-          </Link>
+          </NavLink>
         ))}
       </div>
       <Outlet></Outlet>
