@@ -12,10 +12,16 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/invoices" element={<Invoices />}>
-          <Route path="/invoices/123" element={<div>Bills</div>}></Route>
-        </Route>
+        <Route path="/invoices" element={<Invoices />} />
         <Route path="/expenses" element={<Expenses />} />
+        <Route
+          path="*"
+          element={
+            <main className="text-center">
+              <p className="text-3xl">There's nothing here!</p>
+            </main>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>
