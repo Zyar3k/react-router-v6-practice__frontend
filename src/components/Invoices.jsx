@@ -13,6 +13,7 @@ const Invoices = () => {
             className="bg-gray-200"
             to={`/invoices/${invoice.number}`}
             key={index}
+            target="_blank"
           >
             {invoice.last_name}
           </Link>

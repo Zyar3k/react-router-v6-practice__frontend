@@ -13,9 +13,8 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/invoices" element={<Invoices />}>
-          <Route path=":invoiceId" element={<Bills />}></Route>
-        </Route>
+        <Route path="/invoices" element={<Invoices />}></Route>
+        <Route path="/invoices/:invoiceId" element={<Bills />}></Route>
         <Route path="/expenses" element={<Expenses />} />
         <Route
           path="*"
